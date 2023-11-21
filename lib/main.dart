@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -15,16 +16,17 @@ void main() async {
 
   // await dotenv.load(fileName: ".env");
   String url = "https://qapzckuxjzmzhauswejx.supabase.co";
-  String anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHpja3V4anptemhhdXN3ZWp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzYxNDQwMDcsImV4cCI6MTk5MTcyMDAwN30.ayJd8Aq7cHgEQ4VaL9UPEO-u21QVyvcqleKggHLIxY8";
+  String anonKey =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHpja3V4anptemhhdXN3ZWp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzYxNDQwMDcsImV4cCI6MTk5MTcyMDAwN30.ayJd8Aq7cHgEQ4VaL9UPEO-u21QVyvcqleKggHLIxY8";
   await Supabase.initialize(
     url: url,
     anonKey: anonKey,
   );
-  runApp(const MyApp());
+  runApp(const MyApp(title: 'Title'));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required String title});
 
   // This widget is the root of your application.
   @override
@@ -38,12 +40,32 @@ class MyApp extends StatelessWidget {
       ),
     );
     return GetMaterialApp(
-      title: 'Events Ticket',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: ColorConstants.ksecondary,
-      ),
-      home: SplashScreen(),
-    );
+        title: 'Events Ticket',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: ColorConstants.ksecondary,
+        ),
+        home: AnimatedSplashScreen(
+            splash: 'events_pay\assets\images\logo.png',
+            duration: 3000,
+            splashTransition: SplashTransition.scaleTransition,
+            backgroundColor: Colors.blue,
+            nextScreen: const MyApp(title: 'Title')));
+    // Center(
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       Container(
+    //         height: 100,
+    //         width: 100,
+    //         color: Colors.black,
+    //       ),
+    //       const Text(
+    //         'Welcome to Events Pay',
+    //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    //       ),
+    //     ],
+    //   ),
+    // ),
   }
 }
