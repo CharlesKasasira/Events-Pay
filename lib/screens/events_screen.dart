@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packingticketingsystem/screens/event_details.dart';
+import 'package:packingticketingsystem/widgets/drawer.dart';
 import 'package:get/get.dart';
 
 
@@ -53,13 +54,10 @@ class EventsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Row(
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back,color: Colors.white),
-              onPressed: () {
-                // Handle back button press
-              },
-            ),
+          children: [IconButton(
+            icon: const Icon(Icons.menu, color: Colors.white),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
             Text("Events",style: TextStyle(color: Colors.white)),
           ],
         ),
@@ -107,6 +105,7 @@ class EventsScreen extends StatelessWidget {
           );
         },
       ),
+      drawer: const MyDrawer(),
     );
   }
 }

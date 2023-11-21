@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:packingticketingsystem/screens/events_screen.dart';
+import 'package:packingticketingsystem/screens/paidevents_screen.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -38,24 +40,24 @@ class _MyDrawerState extends State<MyDrawer> {
                   height: 12,
                 ),
                 const Text(
-                  'Charles',
+                  'Kasasira Charles',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 17),
                 ),
                 const Text(
-                  "charleskasasira01@gmail.com",
+                  "charlesbro@gmail.com",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.normal),
                 ),
               ],
             ),),
-            ListTile(
-            leading: const Icon(Icons.payment_outlined),
-            title: const Text('Make Payment'),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Events'),
             onTap: () {
-              Get.back();
+              Get.off(() => EventsScreen());
               // Get.to(
               //   () => PaymentPage(
               //           user: widget.user,
@@ -68,12 +70,15 @@ class _MyDrawerState extends State<MyDrawer> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.message_outlined),
-            title: const Text('Chat'),
+            leading: const Icon(Icons.event),
+            title: const Text('Paid Events'),
             onTap: () {
-              Get.back();
+              Get.off(() => PaidTicketScreen());
               // Get.to(
-              //   () => const ChatPage(),
+              //   () => PaymentPage(
+              //           user: widget.user,
+              //           firstName: widget.firstName,
+              //           lastName: widget.lastName),
               //   transition: Transition.cupertino,
               //   duration: const Duration(milliseconds: 600),
               //   curve: Curves.easeOut,
@@ -104,6 +109,7 @@ class _MyDrawerState extends State<MyDrawer> {
             leading: const Icon(Icons.logout),
             title: const Text('Log Out'),
             onTap: () async {
+
               // _authController.signOut();
             }
           ),
