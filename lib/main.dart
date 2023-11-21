@@ -7,6 +7,7 @@ import 'package:packingticketingsystem/screens/splash_screen.dart';
 import 'package:packingticketingsystem/utils/color_constants.dart';
 import 'package:packingticketingsystem/utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:packingticketingsystem/screens/events_screen.dart';
 // import 'package:get/get.dart';
 
 void main() async {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: ColorConstants.ksecondary,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

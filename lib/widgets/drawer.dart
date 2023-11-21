@@ -16,7 +16,7 @@ class _MyDrawerState extends State<MyDrawer> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xff1A1A1A),
             ),
             child: Column(
@@ -37,16 +37,16 @@ class _MyDrawerState extends State<MyDrawer> {
                   const SizedBox(
                   height: 12,
                 ),
-                Text(
+                const Text(
                   'Charles',
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 17),
                 ),
-                Text(
+                const Text(
                   "charleskasasira01@gmail.com",
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.normal),
                 ),
               ],
