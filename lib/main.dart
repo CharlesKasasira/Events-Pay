@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:packingticketingsystem/screens/home_screen.dart';
+import 'package:packingticketingsystem/screens/login%20page.dart';
+import 'package:packingticketingsystem/screens/signup_screen.dart';
 import 'package:packingticketingsystem/screens/splash_screen.dart';
 import 'package:packingticketingsystem/utils/color_constants.dart';
 import 'package:packingticketingsystem/utils/constants.dart';
@@ -45,26 +48,17 @@ class MyApp extends StatelessWidget {
           primaryColor: ColorConstants.ksecondary,
         ),
         home: AnimatedSplashScreen(
-            splash: 'events_pay\assets\images\logo.png',
+            splash: 'assets/images/logo.png',
             duration: 3000,
             splashTransition: SplashTransition.scaleTransition,
-            backgroundColor: Colors.blue,
-            nextScreen: const MyApp()));
-    // Center(
-    //   child: Column(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: [
-    //       Container(
-    //         height: 100,
-    //         width: 100,
-    //         color: Colors.black,
-    //       ),
-    //       const Text(
-    //         'Welcome to Events Pay',
-    //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    //       ),
-    //     ],
-    //   ),
-    // ),
+            backgroundColor: Colors.white,
+            nextScreen: LoginPage())
+            ,routes: {
+              // add routes to your screens here
+              'home':(context) =>HomeScreen(), 
+              'signup': (context)=> SignUpPage(),
+              'login': (context)=> LoginPage(),
+
+            },);
   }
 }

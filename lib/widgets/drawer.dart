@@ -55,10 +55,7 @@ class _MyDrawerState extends State<MyDrawer> {
         leading: const Icon(Icons.payment_outlined),
         title: const Text('Make Payment'),
         onTap: () {
-          // Get.back();
-          Get.to(
-            () => SplashScreen(),
-          );
+          Get.back();
           // Get.to(
           //   () => PaymentPage(
           //           user: widget.user,
