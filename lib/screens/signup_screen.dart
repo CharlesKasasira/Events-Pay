@@ -32,16 +32,17 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: EdgeInsets.all(40.0),
         child: Column(mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(height: 40,),
           Container(
             width: 200,
             height: 200,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
               image: DecorationImage(
                fit: BoxFit.fill,
               image: AssetImage('assets/images/logo.png') )
             ),
           ),
+          SizedBox(height: 10,),
           TextField(
             controller: fullName,
             decoration: InputDecoration(labelText: 'Full Name',
@@ -71,6 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(height:20),
             ElevatedButton(
               onPressed: (){
+                Navigator.pushNamed(context, 'login');
               } ,
                child: Text('Sign Up'),
                style: ButtonStyle(
@@ -90,7 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         decoration: TextDecoration.underline,
                       ),recognizer: TapGestureRecognizer()
                       ..onTap=() {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushNamed(context, 'login');
                       }
                     
                     )
