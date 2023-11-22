@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:packingticketingsystem/screens/splash_screen.dart';
+import 'package:packingticketingsystem/screens/profile_page.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -84,7 +84,7 @@ class _MyDrawerState extends State<MyDrawer> {
         leading: const Icon(Icons.person_outline),
         title: const Text('Profile'),
         onTap: () {
-          Get.back();
+          Get.to(() => ProfilePage());
           // Get.to(
           //   () => const AccountPage(),
           //   transition: Transition.cupertino,
