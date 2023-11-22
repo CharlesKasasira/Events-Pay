@@ -54,9 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
           children: [
-            Row(
+            const Row(
               children: [
-                const Text(
+                Text(
                   'Welcome, ',
                   style: TextStyle(
                     fontSize: 18,
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Text(
                   'Charles',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ]
         )
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
