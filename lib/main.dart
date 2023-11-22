@@ -14,19 +14,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await FlutterConfig.loadEnvVariables();
 
-  // await dotenv.load(fileName: ".env");
-  String url = "https://qapzckuxjzmzhauswejx.supabase.co";
-  String anonKey =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHpja3V4anptemhhdXN3ZWp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzYxNDQwMDcsImV4cCI6MTk5MTcyMDAwN30.ayJd8Aq7cHgEQ4VaL9UPEO-u21QVyvcqleKggHLIxY8";
+  await dotenv.load(fileName: ".env");
+  String url = dotenv.env['YOUR_SUPABASE_URL'] ?? "";
+  String anonKey = dotenv.env['YOUR_SUPABASE_ANNON_KEY'] ?? "";
   await Supabase.initialize(
     url: url,
     anonKey: anonKey,
   );
-  runApp(const MyApp(title: 'Title'));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required String title});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
             duration: 3000,
             splashTransition: SplashTransition.scaleTransition,
             backgroundColor: Colors.blue,
-            nextScreen: const MyApp(title: 'Title')));
+            nextScreen: const MyApp()));
     // Center(
     //   child: Column(
     //     mainAxisAlignment: MainAxisAlignment.center,
