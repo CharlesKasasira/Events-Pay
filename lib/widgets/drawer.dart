@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:packingticketingsystem/screens/events_screen.dart';
 import 'package:packingticketingsystem/screens/paidevents_screen.dart';
+import 'package:packingticketingsystem/screens/splash_screen.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -89,12 +90,12 @@ class _MyDrawerState extends State<MyDrawer> {
             leading: const Icon(Icons.person_outline),
             title: const Text('Profile'),
             onTap: () {
-              Get.back();
               // Get.to(
-              //   () => const AccountPage(),
-              //   transition: Transition.cupertino,
-              //   duration: const Duration(milliseconds: 600),
-              //   curve: Curves.easeOut,
+                // page that should be
+                // () => const AccountPage(),
+                // transition: Transition.cupertino,
+                // duration: const Duration(milliseconds: 600),
+                // curve: Curves.easeOut,
               // );
             },
           ),
@@ -109,12 +110,9 @@ class _MyDrawerState extends State<MyDrawer> {
             leading: const Icon(Icons.logout),
             title: const Text('Log Out'),
             onTap: () async {
-
               // _authController.signOut();
             }
           ),
         ]
       )
-    );
-  }
-}
+    );}}
