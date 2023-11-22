@@ -84,7 +84,7 @@ class _MyDrawerState extends State<MyDrawer> {
         leading: const Icon(Icons.person_outline),
         title: const Text('Profile'),
         onTap: () {
-          Get.to(() => ProfilePage(), transition: Transition.cupertino);
+          Get.to(() => ProfilePage());
           // Get.to(
           //   () => const AccountPage(),
           //   transition: Transition.cupertino,
