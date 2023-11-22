@@ -19,8 +19,9 @@ void main() async {
   // await FlutterConfig.loadEnvVariables();
 
   await dotenv.load(fileName: ".env");
-  String url = dotenv.env['YOUR_SUPABASE_URL'] ?? "";
-  String anonKey = dotenv.env['YOUR_SUPABASE_ANNON_KEY'] ?? "";
+  String url = "https://qapzckuxjzmzhauswejx.supabase.co";
+  String anonKey =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhcHpja3V4anptemhhdXN3ZWp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzYxNDQwMDcsImV4cCI6MTk5MTcyMDAwN30.ayJd8Aq7cHgEQ4VaL9UPEO-u21QVyvcqleKggHLIxY8";
   await Supabase.initialize(
     url: url,
     anonKey: anonKey,
