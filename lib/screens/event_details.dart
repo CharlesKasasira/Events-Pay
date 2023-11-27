@@ -75,9 +75,9 @@ class Events_Details extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildTicketPriceRow("Bronze", "\$100"),
-                  _buildTicketPriceRow("Silver", "\$75"),
-                  _buildTicketPriceRow("Gold", "\$50"),
+                  _buildTicketPriceRow("Bronze", "5000/="),
+                  _buildTicketPriceRow("Silver", "10000/="),
+                  _buildTicketPriceRow("Gold", "15000/="),
                 ],
               ),
             ),
