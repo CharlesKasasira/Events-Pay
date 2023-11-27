@@ -8,7 +8,7 @@ class TicketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black45,
         title: Row(
           children: [
             IconButton(
@@ -37,7 +37,7 @@ class TicketScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.blue, // Change color as needed
+                color: Colors.white, // Change color as needed
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Column(
@@ -100,15 +100,19 @@ class TicketScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            // Print Button
             Container(
+              color: Colors.black45,
               width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 16),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle print button press
+                  // push to make payment screen but for testing pushing it to ticket screen
+                  Get.off(() => TicketScreen());
+                  // Handle button press
                 },
-                child: Text("Print Ticket"),
+                child: Text(
+                  "Print Ticket",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ],

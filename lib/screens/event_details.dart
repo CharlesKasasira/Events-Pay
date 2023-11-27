@@ -9,7 +9,7 @@ class Events_Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black45,
         title: Row(
           children: [
             IconButton(
@@ -33,7 +33,6 @@ class Events_Details extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Replace "Major events" text with a rounded image
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.asset("assets/images/hajat.jpg",
@@ -72,17 +71,19 @@ class Events_Details extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Container(
+              color: Colors.grey.shade200,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildTicketPriceRow("Bronze", "\$100"),
-                  _buildTicketPriceRow("Silver", "\$75"),
-                  _buildTicketPriceRow("Gold", "\$50"),
+                  _buildTicketPriceRow("Bronze", "5000/="),
+                  _buildTicketPriceRow("Silver", "10000/="),
+                  _buildTicketPriceRow("Gold", "15000/="),
                 ],
               ),
             ),
             SizedBox(height: 16),
             Container(
+              color: Colors.black45,
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
@@ -90,7 +91,10 @@ class Events_Details extends StatelessWidget {
                   Get.off(() => TicketScreen());
                   // Handle button press
                 },
-                child: Text("Make Payment"),
+                child: Text(
+                  "Make Payment",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ],
@@ -98,6 +102,8 @@ class Events_Details extends StatelessWidget {
       ),
     );
   }
+
+
 
   Widget _buildTicketPriceRow(String name, String value) {
     return Padding(
