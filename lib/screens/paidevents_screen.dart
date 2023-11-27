@@ -71,7 +71,10 @@ class PaidTicketScreen extends StatelessWidget {
                     events[index].eventLocation,
                     style: TextStyle(color: Colors.green),
                   ),
-                ],
+                  Divider(
+                    color: Colors.black45,
+                    height: 1.0,
+                  ),],
               ),
               onTap: () {
                 Get.off(() => TicketScreen(), arguments: events[index]);
