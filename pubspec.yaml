@@ -16,7 +16,7 @@ dependencies:
   # cached_network_image: ^3.2.2
   # fl_chart: ^0.55.2
   flutter_barcode_scanner: ^2.0.0
-  flutter_config: ^2.0.0
+  flutter_config: ^2.0.2
   flutter_dotenv: ^5.1.0
   # flutter_launcher_icons: ^0.10.0
   # flutter_polyline_points: ^2.0.0
@@ -48,11 +48,17 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-  flutter_lints: ^2.0.0
+# changed lints to version 3 from "^2.0.0"
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
+  # added the fonts since i got error of failing to fetch google fonts roboto
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/Roboto-Regular.ttf
+        # end of addition
 
   assets:
     - .env

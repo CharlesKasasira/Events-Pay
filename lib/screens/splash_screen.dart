@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:packingticketingsystem/screens/home_screen.dart';
+import 'package:packingticketingsystem/screens/events_screen.dart';
 
 import '../main.dart';
 
@@ -18,6 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    // Future.wait([]).then((responseList) async {
+    //   Get.off(() => EventsScreen(), transition: Transition.fadeIn);
+    // });
     _navigatetohome();
   }
 
