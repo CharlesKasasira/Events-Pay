@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:packingticketingsystem/screens/paidevents_screen.dart';
+import 'package:packingticketingsystem/utils/constants.dart';
+import 'package:packingticketingsystem/widgets/appbar_avatar.dart';
+import 'package:packingticketingsystem/widgets/button.dart';
+import 'package:packingticketingsystem/widgets/myseparator.dart';
 
 
 class TicketScreen extends StatelessWidget {
@@ -8,113 +12,102 @@ class TicketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black45,
-        title: Row(
+        shadowColor: const Color.fromARGB(100, 158, 158, 158),
+        backgroundColor: const Color(0xff1a1a1a),
+        elevation: 0,
+        foregroundColor: Colors.white,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back,color: Colors.white),
-              onPressed: () {
-                // take back to payment screen but for testing it push to paid ticket screen
-                Get.off(() => PaidTicketScreen());
-                // Handle back button press
-              },
+            Text("My Ticket",style: TextStyle(color: Colors.white)),
+            SizedBox(
+              width: 10,
             ),
-            Text("My Ticket", style: TextStyle(color: Colors.white)),
+            AppBarAvatar()
           ],
-        ),
-        actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/profile_image.jpg"),
-          ),
-        ],
+        )
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // First Container
             Container(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
               decoration: BoxDecoration(
                 color: Colors.white, // Change color as needed
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: BorderRadius.circular(4.0),
+                boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3), // shadow color
+                      spreadRadius: 5, // how much the shadow should spread
+                      blurRadius: 7, // how blurry the shadow should be
+                      offset: Offset(0, 2), // changes the shadow position
+                    ),
+                  ],
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    "Malalas",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   Row(
                     children: [
-                      Icon(Icons.location_on),
+                      Text(
+                        "Watoto Christmas Cantanta",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4,),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on_outlined, color: kTinGrey,),
                       SizedBox(width: 8),
-                      Text("Church"),
+                      Text("Watoto Church (Downtown)"),
                     ],
                   ),
                   SizedBox(height: 16),
                   _buildTextPair("Ticket for", "Date"),
                   SizedBox(height: 16),
-                  _buildTextPair("Kasasira Charles", "eventDate", isBold: true, textColor: Colors.green),
+                  _buildTextPair("Charles Kasasira", "eventDate", isBold: true, textColor: Colors.green),
                   SizedBox(height: 32),
                   _buildTextPair("Ticket Type", "Time"),
                   SizedBox(height: 16),
                   _buildTextPair("eventTicket", "eventTime", isBold: true, textColor: Colors.green),
-                ],
+
+                  SizedBox(height: 24,),
+
+                  const SizedBox(
+                        height: 10,
+                      ),
+              const MySeparator(color: Colors.grey),
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            // Dotted Line
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 16),
-              child: CustomPaint(
-                painter: DottedLinePainter(),
-              ),
-            ),
-            // Second Container
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.blue, // Change color as needed
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Show the QR Code at the entrance",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Image.asset(
-                    "assets/images/qr-code.png", // Replace with your QR code image
-                    height: 100,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 16),
-            Container(
-              color: Colors.black45,
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // push to make payment screen but for testing pushing it to ticket screen
-                  Get.off(() => TicketScreen());
-                  // Handle button press
-                },
-                child: Text(
-                  "Print Ticket",
-                  style: TextStyle(color: Colors.white),
+
+              Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Show the QR Code at the entrance",
                 ),
+                SizedBox(height: 16),
+                Image.asset(
+                  "assets/images/qr-code.png", color: Colors.black, // Replace with your QR code image
+                  height: 100,
+                ),
+              ],
+            ),
+                ],
               ),
             ),
+            
+            
+            SizedBox(height: 40),
+
+            CustomElevatedButton(onTap: () {}, text: "Print Ticket"),
           ],
         ),
       ),

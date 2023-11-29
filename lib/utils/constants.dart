@@ -10,11 +10,22 @@ const kTinGrey = Color(0xFF909090);
 const ksecondary = Color(0xff1a1a1a);
 const kGreen = Color(0xff005620);
 
+const kLeadBlack = Color(0xFF303030);
+const kOffBlack = Color(0xff1A1A1A);
+const kTextGray = Color(0xff7B7B7B);
+const kGray = Color(0xFFF5F5F5);
+const kRed = Color(0xFFEB5757);
+
 const kNunitoSansSemiBold18 = TextStyle(
   fontFamily: "NunitoSans",
-  fontSize: 18,
+  fontSize: 17,
   color: kGreen,
   fontWeight: FontWeight.w600,
+);
+
+const kNunitoSans16 = TextStyle(
+  fontFamily: "NunitoSans",
+  fontSize: 16,
 );
 
 /// Simple preloader inside a Center widget

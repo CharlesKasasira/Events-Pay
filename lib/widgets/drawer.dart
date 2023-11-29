@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:packingticketingsystem/controllers/auth_controllers.dart';
+import 'package:packingticketingsystem/screens/events_screen.dart';
+import 'package:packingticketingsystem/screens/home_screen.dart';
 import 'package:packingticketingsystem/screens/profile_page.dart';
+import 'package:packingticketingsystem/screens/scan_qr.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -10,6 +15,12 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  final AuthController _authController = AuthController();
+  final storage = GetStorage();
+  late Map profileMap = storage.read('profile');
+  late String fullName = profileMap['fullName'] ?? "";
+  late String email = profileMap['email'] ?? "";
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -37,14 +48,14 @@ class _MyDrawerState extends State<MyDrawer> {
               height: 12,
             ),
             Text(
-              'Charles',
+              fullName,
               style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 17),
             ),
             Text(
-              "charleskasasira01@gmail.com",
+              email,
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.normal),
             ),
@@ -52,49 +63,59 @@ class _MyDrawerState extends State<MyDrawer> {
         ),
       ),
       ListTile(
-        leading: const Icon(Icons.payment_outlined),
-        title: const Text('Make Payment'),
+        leading: const Icon(Icons.home_rounded),
+        title: const Text('Home'),
         onTap: () {
           Get.back();
-          // Get.to(
-          //   () => PaymentPage(
-          //           user: widget.user,
-          //           firstName: widget.firstName,
-          //           lastName: widget.lastName),
-          //   transition: Transition.cupertino,
-          //   duration: const Duration(milliseconds: 600),
-          //   curve: Curves.easeOut,
-          // );
+          Get.to(
+            () => const HomeScreen(),
+            transition: Transition.cupertino,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOut,
+          );
         },
       ),
       ListTile(
-        leading: const Icon(Icons.message_outlined),
-        title: const Text('Chat'),
+        leading: const Icon(Icons.event_outlined),
+        title: const Text('Events'),
         onTap: () {
           Get.back();
-          // Get.to(
-          //   () => const ChatPage(),
-          //   transition: Transition.cupertino,
-          //   duration: const Duration(milliseconds: 600),
-          //   curve: Curves.easeOut,
-          // );
+          Get.to(
+            () => EventsScreen(),
+            transition: Transition.cupertino,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOut,
+          );
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.qr_code_2_outlined),
+        title: const Text('Scan'),
+        onTap: () {
+          Get.back();
+          Get.to(
+            () => ScanPage(),
+            transition: Transition.cupertino,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOut,
+          );
         },
       ),
       ListTile(
         leading: const Icon(Icons.person_outline),
         title: const Text('Profile'),
         onTap: () {
-          Get.to(() => ProfilePage());
-          // Get.to(
-          //   () => const AccountPage(),
-          //   transition: Transition.cupertino,
-          //   duration: const Duration(milliseconds: 600),
-          //   curve: Curves.easeOut,
-          // );
+          Get.back();
+          Get.to(
+            () => ProfilePage(),
+            transition: Transition.cupertino,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOut,
+          );
         },
       ),
       const SizedBox(
-        height: 20,
+        height: 32,
       ),
       const Divider(
         thickness: 1,
@@ -103,7 +124,8 @@ class _MyDrawerState extends State<MyDrawer> {
           leading: const Icon(Icons.logout),
           title: const Text('Log Out'),
           onTap: () async {
-            // _authController.signOut();
+            Get.back();
+            _authController.signOut();
           }),
     ]));
   }

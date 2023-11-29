@@ -1,22 +1,17 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:packingticketingsystem/screens/home_screen.dart';
 import 'package:packingticketingsystem/screens/login%20page.dart';
 import 'package:packingticketingsystem/screens/signup_screen.dart';
-// import 'package:packingticketingsystem/screens/splash_screen.dart';
 import 'package:packingticketingsystem/utils/color_constants.dart';
 import 'package:packingticketingsystem/utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-// import 'package:packingticketingsystem/screens/events_screen.dart';
-// import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await FlutterConfig.loadEnvVariables();
 
   await dotenv.load(fileName: ".env");
   String url = "https://qapzckuxjzmzhauswejx.supabase.co";
@@ -54,7 +49,7 @@ class MyApp extends StatelessWidget {
             duration: 3000,
             splashTransition: SplashTransition.scaleTransition,
             backgroundColor: Colors.white,
-            nextScreen: LoginPage())
+            nextScreen: const LoginPage())
             ,routes: {
               // add routes to your screens here
               'home':(context) =>HomeScreen(), 
