@@ -18,7 +18,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: MyDrawer(),
         appBar: AppBar(
+
         shadowColor: const Color.fromARGB(100, 158, 158, 158),
         backgroundColor: const Color(0xff1a1a1a),
         elevation: 0,
@@ -34,6 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
         body: SingleChildScrollView(
+
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
