@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:packingticketingsystem/screens/ticket_screen.dart';
 import 'package:packingticketingsystem/screens/events_screen.dart';
+import 'package:packingticketingsystem/widgets/appbar_avatar.dart';
 
 
 class Events_Details extends StatelessWidget {
@@ -9,24 +10,20 @@ class Events_Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black45,
+        shadowColor: const Color.fromARGB(100, 158, 158, 158),
+        backgroundColor: const Color(0xff1a1a1a),
+        elevation: 0,
+        foregroundColor: Colors.white,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back,color: Colors.white),
-              onPressed: () {
-                Get.off(() => EventsScreen());
-                // Handle back button press
-              },
-            ),
             Text("Event Details",style: TextStyle(color: Colors.white)),
+            SizedBox(
+              width: 10,
+            ),
+            AppBarAvatar()
           ],
         ),
-        actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/profile_image.jpg"),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

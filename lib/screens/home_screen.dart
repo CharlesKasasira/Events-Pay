@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:packingticketingsystem/screens/event_details.dart';
 import 'package:packingticketingsystem/utils/color_constants.dart';
+import 'package:packingticketingsystem/utils/constants.dart';
 import 'package:packingticketingsystem/widgets/appbar_avatar.dart';
 import 'package:packingticketingsystem/widgets/drawer.dart';
 
@@ -12,6 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final storage = GetStorage();
+  late Map profileMap = storage.read('profile');
+  late String fullName = profileMap['fullName'] ?? "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,81 +53,126 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         }),),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          left: 10.0,
-          right: 10.0,
-          top: 8.0,
-        ),
-        child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
-          children: [
-            const Row(
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Welcome, ',
+                  'Major Events',
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
                 Text(
-                  'Charles',
+                  'Search',
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 18),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                gradient: const LinearGradient(
-                  colors: [Colors.black, Color(0xff636363)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'No current',
-                            style: GoogleFonts.roboto(
-                                textStyle: const TextStyle(letterSpacing: .5),
-                                fontSize: 18,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'QR code',
-                            style: GoogleFonts.roboto(
-                                textStyle: const TextStyle(letterSpacing: .5),
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
+          ),
+          Image.asset(
+                      "assets/images/proclaim.jpg",
+                      width: MediaQuery.of(context).size.width,
+                    ),
+          const SizedBox(height: 18),
 
-                        ]
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 400,
+              color: Colors.white,
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Text("Events List", style: TextStyle(fontSize: 18),),
+                  ),
+                  Divider( thickness: 1,),
+                  InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => Events_Details(),
+                        transition: Transition.cupertino,
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeOut,
+                      );
+                    },
+                    child: Ink(
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset("assets/images/xmascantanta.jpg", width: 56, height: 56,)),
+                        title: Text("Christmas Cantant", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+                        subtitle: Row(
+                          children: [
+                            Text("12/12/2023"),
+                            SizedBox(width: 8,),
+                            Text("Watoto", style: TextStyle(color: kGreen),),
+                          ],
+                        ),
                       ),
-                      Image.asset(
-                        "assets/images/qr-code.png",
-                        width: 100,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => Events_Details(),
+                        transition: Transition.cupertino,
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeOut,
+                      );
+                    },
+                    child: Ink(
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset("assets/images/meatandloaf.jpg")),
+                        title: Text("Meat and Loaf", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+                        subtitle: Row(
+                          children: [
+                            Text("12/04/2023"),
+                            SizedBox(width: 8,),
+                            Text("Lugogo cricket Oval", style: TextStyle(color: kGreen),),
+                          ],
+                        ),
                       ),
-                      ]
-                  )
-                ]
-              ))
-          ]
-        )
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => Events_Details(),
+                        transition: Transition.cupertino,
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeOut,
+                      );
+                    },
+                    child: Ink(
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset("assets/images/youth.jpg", width: 56, height: 56,)),
+                        title: Text("Munyigo Pro Max", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+                        subtitle: Row(
+                          children: [
+                            Text("01/01/2024"),
+                            SizedBox(width: 8,),
+                            Text("Uganda Museum", style: TextStyle(color: kGreen),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+          
+        ]
       ),
       drawer: const MyDrawer(),
     );
