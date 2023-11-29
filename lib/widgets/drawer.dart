@@ -5,6 +5,7 @@ import 'package:packingticketingsystem/controllers/auth_controllers.dart';
 import 'package:packingticketingsystem/screens/events_screen.dart';
 import 'package:packingticketingsystem/screens/home_screen.dart';
 import 'package:packingticketingsystem/screens/profile_page.dart';
+import 'package:packingticketingsystem/screens/scan_qr.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -81,6 +82,19 @@ class _MyDrawerState extends State<MyDrawer> {
           Get.back();
           Get.to(
             () => EventsScreen(),
+            transition: Transition.cupertino,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOut,
+          );
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.qr_code_2_outlined),
+        title: const Text('Scan'),
+        onTap: () {
+          Get.back();
+          Get.to(
+            () => ScanPage(),
             transition: Transition.cupertino,
             duration: const Duration(milliseconds: 600),
             curve: Curves.easeOut,

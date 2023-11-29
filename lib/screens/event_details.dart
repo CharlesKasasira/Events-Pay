@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:packingticketingsystem/screens/payment.dart';
 import 'package:packingticketingsystem/screens/ticket_screen.dart';
-import 'package:packingticketingsystem/screens/events_screen.dart';
 import 'package:packingticketingsystem/widgets/appbar_avatar.dart';
+import 'package:packingticketingsystem/widgets/button.dart';
 
 
 class Events_Details extends StatelessWidget {
@@ -14,7 +15,7 @@ class Events_Details extends StatelessWidget {
         backgroundColor: const Color(0xff1a1a1a),
         elevation: 0,
         foregroundColor: Colors.white,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Event Details",style: TextStyle(color: Colors.white)),
@@ -32,33 +33,34 @@ class Events_Details extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
-              child: Image.asset("assets/images/hajat.jpg",
+              child: Image.asset("assets/images/xmascantanta.jpg",
                 width: double.infinity,
-                height: 100,
                 fit: BoxFit.cover,
               ),
             ),
             SizedBox(height: 16),
             Text(
-              "eventName",
+              "Christmas Cantanta",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 8),
             Text(
-              "eventDate",
+              "24/12/2023",
               style: TextStyle(
                 fontSize: 16,
               ),
             ),
+            SizedBox(height: 4),
             Text(
-              "at eventLocation",
+              "Watoto",
               style: TextStyle(
                 fontSize: 16,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 24),
             Text(
               "Ticket Prices",
               style: TextStyle(
@@ -68,32 +70,27 @@ class Events_Details extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Container(
-              color: Colors.grey.shade200,
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(8)
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildTicketPriceRow("Bronze", "5000/="),
+                  SizedBox(height: 8),
                   _buildTicketPriceRow("Silver", "10000/="),
+                  SizedBox(height: 8),
                   _buildTicketPriceRow("Gold", "15000/="),
                 ],
               ),
             ),
             SizedBox(height: 16),
-            Container(
-              color: Colors.black45,
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // push to make payment screen but for testing pushing it to ticket screen
-                  Get.off(() => TicketScreen());
-                  // Handle button press
-                },
-                child: Text(
-                  "Make Payment",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
+
+            CustomElevatedButton(onTap: (){
+              Get.to(() => PaymentScreen());
+            }, text: "Make Payment"),
           ],
         ),
       ),
